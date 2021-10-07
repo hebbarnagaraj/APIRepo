@@ -24,6 +24,10 @@ public class GETRequest {
 		
 		Response response = request.request(Method.GET,"/api/users/2");
 		
+		int status = response.getStatusCode();
+		
+		Assert.assertEquals(status, 200);
+		
 		System.out.println("==========Response Body :========");
 		response.prettyPrint();
 		
