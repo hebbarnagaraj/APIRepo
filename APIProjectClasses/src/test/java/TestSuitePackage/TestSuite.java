@@ -40,13 +40,14 @@ public class TestSuite {
 	public void SOAPServices() {
 		try {
 			
-			System.out.println("===========Sending SOAP Add Calculator Request=================");
-			SOAPAddCalculator soapAddcalc = new SOAPAddCalculator();
-			soapAddcalc.SOAPAddCalc();
-			
+//			System.out.println("===========Sending SOAP Add Calculator Request=================");
+//			SOAPAddCalculator soapAddcalc = new SOAPAddCalculator();
+//			soapAddcalc.SOAPAddCalc();
+//			
 			System.out.println("===========Sending SOAP Substract Calculator Request=================");
 			SOAPSubCalculator soapSubcalc = new SOAPSubCalculator();
 			soapSubcalc.SOAPSubCalc();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
