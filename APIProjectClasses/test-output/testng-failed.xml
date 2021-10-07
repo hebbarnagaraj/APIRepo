@@ -6,7 +6,6 @@
       <class name="TestSuitePackage.TestSuite">
         <methods>
           <include name="RESTServices"/>
-          <include name="SOAPServices"/>
         </methods>
       </class> <!-- TestSuitePackage.TestSuite -->
     </classes>

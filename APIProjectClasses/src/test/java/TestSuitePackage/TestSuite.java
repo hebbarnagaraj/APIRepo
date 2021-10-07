@@ -12,6 +12,8 @@ import APISOAPPackage.SOAPSubCalculator;
 public class TestSuite {
 	
 	
+	String classname=System.getProperty("classname");
+	
 	@Test
 	public void RESTServices() {
 		
