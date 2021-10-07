@@ -16,6 +16,9 @@ public class SOAPAddCalculator {
 	@Test
 	public void SOAPAddCalc() {
 		
+		
+		
+		
 		RestAssured.baseURI="http://dneonline.com";
 		RequestSpecification request = RestAssured.given();
 		request.headers("Content-Type","text/xml; charset=utf-8");

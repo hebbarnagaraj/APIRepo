@@ -14,7 +14,7 @@ public class TestSuite {
 	
 	String classname=System.getProperty("classname");
 	
-	@Test
+	@Test(priority=0)
 	public void RESTServices() {
 		
 		System.out.println("===========Sending GET Request=================");
@@ -36,15 +36,20 @@ public class TestSuite {
 		
 	}
 
-	@Test
+	@Test (priority=1)
 	public void SOAPServices() {
+		try {
+			
+			System.out.println("===========Sending SOAP Add Calculator Request=================");
+			SOAPAddCalculator soapAddcalc = new SOAPAddCalculator();
+			soapAddcalc.SOAPAddCalc();
+			
+			System.out.println("===========Sending SOAP Substract Calculator Request=================");
+			SOAPSubCalculator soapSubcalc = new SOAPSubCalculator();
+			soapSubcalc.SOAPSubCalc();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		System.out.println("===========Sending SOAP Add Calculator Request=================");
-		SOAPAddCalculator soapAddcalc = new SOAPAddCalculator();
-		soapAddcalc.SOAPAddCalc();
-		
-		System.out.println("===========Sending SOAP Substract Calculator Request=================");
-		SOAPSubCalculator soapSubcalc = new SOAPSubCalculator();
-		soapSubcalc.SOAPSubCalc();
 	}
 }
