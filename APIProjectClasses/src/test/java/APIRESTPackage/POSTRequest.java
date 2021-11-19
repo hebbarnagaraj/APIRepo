@@ -3,45 +3,65 @@ package APIRESTPackage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import io.restassured.RestAssured;
-import io.restassured.http.Method;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import com.relevantcodes.extentreports.LogStatus;
 
-public class POSTRequest {
+import basePackage.baseClass;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+
+public class POSTRequest extends baseClass{
 	
-	String userName=System.getProperty("userName");
-	String userJob=System.getProperty("userJob");
+	String petIDPOST=System.getProperty("petIDPOST");
+	String catagNamePOST=System.getProperty("catagNamePOST");
+	String testUserNamePOST=System.getProperty("testUserNamePOST");
+	String photoUrlsPOST=System.getProperty("photoUrlsPOST");
+	String tagNamePOST=System.getProperty("tagNamePOST");
+	
 	
 	@Test
 	public void PostRequest() {
 
-		RestAssured.baseURI="https://reqres.in";
-		
-		RequestSpecification request = RestAssured.given();
 		request.headers("Content-Type","application/json");
+		test.log(LogStatus.INFO, "Headers Added successfully");
+		
 		request.body(requestbody);
-		Response response = request.request(Method.POST,"/api/users");
+		test.log(LogStatus.INFO, "Request Payload Added successfully");
+		
+		Response response = request.request(Method.POST,"v2/pet");
+		test.log(LogStatus.INFO, "Request Sent successfully");
 		
 		int status = response.getStatusCode();
-		Assert.assertEquals(status, 201);
-		
+		if(status==200) {
+			Assert.assertEquals(status, 200);
+			test.log(LogStatus.PASS, "Response Status Code is Validated successfully and Value is "+status);
+		}
+		else {
+			test.log(LogStatus.FAIL, "Response Status Code is Not Correct  and Value is "+status);
+			Assert.fail();
+		}	
 		System.out.println("==========Response Body :========");
 		response.prettyPrint();
 		System.out.println("==============================");
-		
-		JsonPath reponsebody = response.getBody().jsonPath();
-		String userID = reponsebody.get("id").toString();
-		
-		System.out.println("New User Created and User ID is : "+userID);
-		System.out.println("==============================");
-		
+		test.log(LogStatus.INFO, "Response Payload is : "+response.prettyPrint());
 		
 	}
 	String requestbody="{\r\n" + 
-			"    \"name\": \""+userName+"\",\r\n" + 
-			"    \"job\": \""+userJob+"\"\r\n" + 
+			"  \"id\":"+ petIDPOST+",\r\n" + 
+			"  \"category\": {\r\n" + 
+			"    \"id\": "+petIDPOST+",\r\n" + 
+			"    \"name\": \""+catagNamePOST+"\"\r\n" + 
+			"  },\r\n" + 
+			"  \"name\": \""+testUserNamePOST+"\",\r\n" + 
+			"  \"photoUrls\": [\r\n" + 
+			"    \""+photoUrlsPOST+"\"\r\n" + 
+			"  ],\r\n" + 
+			"  \"tags\": [\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": "+petIDPOST+",\r\n" + 
+			"      \"name\": \""+tagNamePOST+"\"\r\n" + 
+			"    }\r\n" + 
+			"  ],\r\n" + 
+			"  \"status\": \"available\"\r\n" + 
 			"}";
 
 }

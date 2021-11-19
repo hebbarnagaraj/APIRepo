@@ -3,12 +3,13 @@ package APISOAPPackage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import io.restassured.RestAssured;
+import com.relevantcodes.extentreports.LogStatus;
+
+import basePackage.baseClassSOAP;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
-public class SOAPSubCalculator {
+public class SOAPSubCalculator extends baseClassSOAP{
 
 	
 	String firstDigitsub=System.getProperty("firstDigitsub");
@@ -16,17 +17,26 @@ public class SOAPSubCalculator {
 	
 	@Test
 	public void SOAPSubCalc() {
-		RestAssured.baseURI="http://dneonline.com";
-		RequestSpecification request = RestAssured.given();
+		
 		request.headers("Content-Type","text/xml; charset=utf-8");
 		request.headers("SOAPAction","http://tempuri.org/Subtract");
+		test.log(LogStatus.INFO, "Headers Added successfully");
 		
 		request.body(requestBody);
+		test.log(LogStatus.INFO, "Request Payload Added successfully");
 		
 		Response response = request.request(Method.POST,"/calculator.asmx");
+		test.log(LogStatus.INFO, "Request Sent successfully");
 		
 		int status = response.getStatusCode();
-		Assert.assertEquals(status, 200);
+		if(status==200) {
+			Assert.assertEquals(status, 200);
+			test.log(LogStatus.PASS, "Response Status Code is Validated successfully and Value is "+status);
+		}
+		else {
+			test.log(LogStatus.FAIL, "Response Status Code is Not Correct  and Value is "+status);
+			Assert.fail();
+		}	
 		
 		System.out.println("==========Response Body :========");
 		response.prettyPrint();
@@ -35,6 +45,8 @@ public class SOAPSubCalculator {
 		String result = response.getBody().xmlPath().getString("SubtractResult");
 		
 		System.out.println("Result is :"+result);
+		test.log(LogStatus.PASS, "Response Payload Validated successfully and Result is  "+result);
+		
 		System.out.println("==============================");
 	}
 	String requestBody="<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n" + 
