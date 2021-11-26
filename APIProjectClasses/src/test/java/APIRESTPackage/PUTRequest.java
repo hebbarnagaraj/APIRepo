@@ -1,10 +1,17 @@
 package APIRESTPackage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.relevantcodes.extentreports.LogStatus;
 
+import POJOPackage.POSTRequestPayload;
+import POJOPackage.POSTRequestPayload.category;
+import POJOPackage.POSTRequestPayload.tags;
 import basePackage.baseClass;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -17,14 +24,55 @@ public class PUTRequest extends baseClass{
 	String testUserNamePUT=System.getProperty("testUserNamePUT");
 	String photoUrlsPUT=System.getProperty("photoUrlsPUT");
 	String tagNamePUT=System.getProperty("tagNamePUT");
+	String requestPayload;
 	
 	@Test
 	public void PutRequest() {
+		
+		List<String> photoUrls = new ArrayList<String>();
+		List<tags> tagslist=new ArrayList<tags>();
+		
+		
+		request.headers("Content-Type","application/json");
+		test.log(LogStatus.INFO, "Headers Added successfully");
+		
+		
+		category catagory = new POSTRequestPayload.category();
+		catagory.setId(petIDPUT);
+		catagory.setName(catagNamePUT);
+		
+		tags tags = new POSTRequestPayload.tags();
+		tags.setId(petIDPUT);
+		tags.setName(tagNamePUT);
+		tagslist.add(tags);
+		
+		photoUrls.add(photoUrlsPUT);
+		
+		POSTRequestPayload payloadobj = new POSTRequestPayload();
+		
+		payloadobj.setId(petIDPUT);
+		payloadobj.setCategory(catagory);
+		payloadobj.setName(testUserNamePUT);
+		payloadobj.setPhotoUrls(photoUrls);
+		payloadobj.setTags(tagslist);
+		payloadobj.setStatus("available");
+		
+		try {
+			
+			 requestPayload = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(payloadobj);
+			 test.log(LogStatus.PASS, "Request Payload Generated :"+requestPayload);
+			 
+			 System.out.println("Request Payload is :"+requestPayload);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 
 		request.headers("Content-Type","application/json");
 		test.log(LogStatus.INFO, "Headers Added successfully");
 		
-		request.body(requestbody);
+		request.body(requestPayload);
 		test.log(LogStatus.INFO, "Request Payload Added successfully");
 		
 		Response response = request.request(Method.PUT,"v2/pet");
@@ -46,22 +94,4 @@ public class PUTRequest extends baseClass{
 		test.log(LogStatus.INFO, "Response Payload is : "+response.prettyPrint());
 		
 	}
-	String requestbody="{\r\n" + 
-			"  \"id\":"+ petIDPUT+",\r\n" + 
-			"  \"category\": {\r\n" + 
-			"    \"id\": "+petIDPUT+",\r\n" + 
-			"    \"name\": \""+catagNamePUT+"\"\r\n" + 
-			"  },\r\n" + 
-			"  \"name\": \""+testUserNamePUT+"\",\r\n" + 
-			"  \"photoUrls\": [\r\n" + 
-			"    \""+photoUrlsPUT+"\"\r\n" + 
-			"  ],\r\n" + 
-			"  \"tags\": [\r\n" + 
-			"    {\r\n" + 
-			"      \"id\": "+petIDPUT+",\r\n" + 
-			"      \"name\": \""+tagNamePUT+"\"\r\n" + 
-			"    }\r\n" + 
-			"  ],\r\n" + 
-			"  \"status\": \"available\"\r\n" + 
-			"}";
 }

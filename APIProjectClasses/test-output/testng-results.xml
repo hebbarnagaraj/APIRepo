@@ -2,48 +2,48 @@
 <testng-results skipped="0" failed="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9224" started-at="2021-11-19T12:39:10Z" finished-at="2021-11-19T12:39:20Z">
+  <suite name="Default suite" duration-ms="9194" started-at="2021-11-26T13:36:33Z" finished-at="2021-11-26T13:36:42Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9224" started-at="2021-11-19T12:39:10Z" finished-at="2021-11-19T12:39:20Z">
+    <test name="Default test" duration-ms="9194" started-at="2021-11-26T13:36:33Z" finished-at="2021-11-26T13:36:42Z">
       <class name="TestSuitePackage.TestSuiteREST">
-        <test-method status="PASS" signature="reportsetUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="reportsetUp" is-config="true" duration-ms="107" started-at="2021-11-19T18:09:10Z" finished-at="2021-11-19T18:09:11Z">
+        <test-method status="PASS" signature="reportsetUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="reportsetUp" is-config="true" duration-ms="111" started-at="2021-11-26T19:06:33Z" finished-at="2021-11-26T19:06:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportsetUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="568" started-at="2021-11-19T18:09:11Z" finished-at="2021-11-19T18:09:11Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="498" started-at="2021-11-26T19:06:33Z" finished-at="2021-11-26T19:06:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="POSTRequestTest()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="POSTRequestTest" duration-ms="2999" started-at="2021-11-19T18:09:11Z" finished-at="2021-11-19T18:09:14Z">
+        <test-method status="PASS" signature="POSTRequestTest()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="POSTRequestTest" duration-ms="2996" started-at="2021-11-26T19:06:33Z" finished-at="2021-11-26T19:06:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- POSTRequestTest -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="6" started-at="2021-11-19T18:09:14Z" finished-at="2021-11-19T18:09:14Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="35" started-at="2021-11-26T19:06:36Z" finished-at="2021-11-26T19:06:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="PUTRequestTest()[pri:1, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="PUTRequestTest" duration-ms="1834" started-at="2021-11-19T18:09:14Z" finished-at="2021-11-19T18:09:16Z">
+        <test-method status="PASS" signature="PUTRequestTest()[pri:1, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="PUTRequestTest" duration-ms="1727" started-at="2021-11-26T19:06:36Z" finished-at="2021-11-26T19:06:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PUTRequestTest -->
-        <test-method status="PASS" signature="GETRequestTest()[pri:2, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="GETRequestTest" duration-ms="1637" started-at="2021-11-19T18:09:16Z" finished-at="2021-11-19T18:09:18Z">
+        <test-method status="PASS" signature="GETRequestTest()[pri:2, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="GETRequestTest" duration-ms="1824" started-at="2021-11-26T19:06:38Z" finished-at="2021-11-26T19:06:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- GETRequestTest -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="0" started-at="2021-11-19T18:09:16Z" finished-at="2021-11-19T18:09:16Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="0" started-at="2021-11-26T19:06:38Z" finished-at="2021-11-26T19:06:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="8" started-at="2021-11-19T18:09:18Z" finished-at="2021-11-19T18:09:18Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="setUp" is-config="true" duration-ms="0" started-at="2021-11-26T19:06:40Z" finished-at="2021-11-26T19:06:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="DELETERequestTest()[pri:3, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="DELETERequestTest" duration-ms="1834" started-at="2021-11-19T18:09:18Z" finished-at="2021-11-19T18:09:19Z">
+        <test-method status="PASS" signature="DELETERequestTest()[pri:3, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="DELETERequestTest" duration-ms="1742" started-at="2021-11-26T19:06:40Z" finished-at="2021-11-26T19:06:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- DELETERequestTest -->
-        <test-method status="PASS" signature="publishReports()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="publishReports" is-config="true" duration-ms="184" started-at="2021-11-19T18:09:19Z" finished-at="2021-11-19T18:09:20Z">
+        <test-method status="PASS" signature="publishReports()[pri:0, instance:TestSuitePackage.TestSuiteREST@527e5409]" name="publishReports" is-config="true" duration-ms="196" started-at="2021-11-26T19:06:42Z" finished-at="2021-11-26T19:06:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- publishReports -->
