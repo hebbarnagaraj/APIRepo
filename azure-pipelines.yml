@@ -20,3 +20,37 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+
+- task: PowerShell@2
+  displayName: 'Executing Cypress Tests'
+  inputs:
+    targetType: 'inline'
+    script: 'mvn clean test -DpetIDPOST="20" -DcatagNamePOST="catagName" -DtestUserNamePOST="testUserName" -DphotoUrlsPOST="photoUrls" -DtagNamePOST="tagName" -DpetIDGET="20" -DpetIDPUT="20" -DcatagNamePUT="catagName" -DtestUserNamePUT="testUserName" -DphotoUrlsPUT="photoUrls" -DtagNamePUT="tagName" -DpetIDDelete="20" -Dclassname="TestSuitePackage.TestSuiteREST"'
+    failOnStderr: true
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  condition: always()
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/*.xml'
+    mergeTestResults: true
+    continueOnError: true
+    publishRunAttachments: true
+    failTaskOnFailedTests: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Report Files'
+  condition: always()
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    continueOnError: true
+
+
+- task: PublishPipelineArtifact@1
+  condition: always()
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'TestReports'
+    continueOnError: true
+    publishRunAttachments: true
